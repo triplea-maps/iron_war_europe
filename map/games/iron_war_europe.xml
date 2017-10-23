@@ -9350,6 +9350,7 @@
             <unitPlacement unitType="Transport" territory="Adriatic Sea Zone" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Patrol-Boat" territory="Adriatic Sea Zone" quantity="5" owner="Italy"/>
             <unitPlacement unitType="Transport" territory="Adriatic Sea Zone" quantity="2" owner="Germany"/>
+            <unitPlacement unitType="Submarine" territory="Adriatic Sea Zone" quantity="2" owner="Germany"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Albania" quantity="1" owner="Albania"/>
             <unitPlacement unitType="Infantry" territory="Albania" quantity="1" owner="Albania"/>
             <unitPlacement unitType="Iron-Ore" territory="Albania" quantity="1" owner="Albania"/>
@@ -9426,7 +9427,7 @@
             <unitPlacement unitType="Mech-Inf" territory="Benghazi" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Infantry" territory="Bergen" quantity="1" owner="Pro-Allies-Neutral"/>
             <unitPlacement unitType="Flag" territory="Bergen" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Berlin" quantity="5" owner="Germany"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Berlin" quantity="6" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Berlin" quantity="5" owner="Germany"/>
             <unitPlacement unitType="SS-Infantry" territory="Berlin" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Medium-Tank" territory="Berlin" quantity="1" owner="Germany"/>
@@ -9505,7 +9506,7 @@
             <unitPlacement unitType="Transport" territory="Cape Arkona Sea Zone" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Patrol-Boat" territory="Cape Arkona Sea Zone" quantity="4" owner="Germany"/>
             <unitPlacement unitType="Fighter" territory="Casablanca" quantity="1" owner="France"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Casablanca" quantity="5" owner="France"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Casablanca" quantity="4" owner="France"/>
             <unitPlacement unitType="Infantry" territory="Casablanca" quantity="1" owner="France"/>
             <unitPlacement unitType="Factory" territory="Casablanca" quantity="1" owner="France"/>
             <unitPlacement unitType="Colony" territory="Casablanca" quantity="1" owner="France"/>
@@ -9755,7 +9756,7 @@
             <unitPlacement unitType="SS-Potential" territory="Madrid" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Mallorca" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Mallorca" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Mecklenburg" quantity="4" owner="Germany"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Mecklenburg" quantity="5" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Mecklenburg" quantity="4" owner="Germany"/>
             <unitPlacement unitType="Light-Tank" territory="Mecklenburg" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Flag" territory="Mecklenburg" quantity="1" owner="Germany"/>

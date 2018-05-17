@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE game SYSTEM "game.dtd">
 <game>
-  <info name="Iron War: Europe" version="0.0.2"/>
+  <info name="Iron War: Europe" version="1.0.0"/>
   <loader javaClass="games.strategy.triplea.TripleA"/>
   <triplea minimumVersion="1.9"/>
   <diceSides value="10"/>
@@ -717,6 +717,7 @@
       <connection t1="Ionian Sea Zone" t2="Libyan Sea Zone"/>
       <connection t1="Ionian Sea Zone" t2="Sicily"/>
       <connection t1="Ionian Sea Zone" t2="Southern Italy"/>
+      <connection t1="Ionian Sea Zone" t2="Tyrrhenian Sea Zone"/>
       <connection t1="Iraq" t2="Khabur"/>
       <connection t1="Iraq" t2="Mosul"/>
       <connection t1="Iraq" t2="Saudi Arabia"/>
@@ -1023,9 +1024,9 @@
         <resource name="PUs"/>
         <resource name="Iron"/>
         <resource name="Fuel"/>
-        <resource name="CR"/>
-        <resource name="SS"/>
-        <resource name="Officials"/>
+        <resource name="CR" isDisplayedFor="France:Britain:Italy"/>
+        <resource name="SS" isDisplayedFor="Germany"/>
+        <resource name="Officials" isDisplayedFor="USSR"/>
     </resourceList>
 
     <playerList>
@@ -1076,11 +1077,11 @@
         <unit name="Mech-Inf"/>
         <unit name="Artillery"/>
         <unit name="SP-Artillery"/>
+        <unit name="Tank-Destroyer"/>
         <unit name="Light-Tank"/>
         <unit name="Medium-Tank"/>
         <unit name="Heavy-Tank"/>
         <unit name="SS-Panzer"/>
-        <unit name="Tank-Destroyer"/>
         <unit name="Transport"/>
         <unit name="Submarine"/>
         <unit name="Patrol-Boat"/>
@@ -1289,86 +1290,72 @@
         <productionRule name="buyMech-Inf">
             <cost resource="PUs" quantity="12"/>
             <cost resource="Iron" quantity="1"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Mech-Inf" quantity="1"/>
         </productionRule>
         <productionRule name="buySP-Artillery">
             <cost resource="PUs" quantity="12"/>
             <cost resource="Iron" quantity="1"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="SP-Artillery" quantity="1"/>
+        </productionRule>
+        <productionRule name="buyTank-Destroyer">
+            <cost resource="PUs" quantity="13"/>
+            <cost resource="Iron" quantity="2"/>
+            <result resourceOrUnit="Tank-Destroyer" quantity="1"/>
         </productionRule>
         <productionRule name="buyLight-Tank">
             <cost resource="PUs" quantity="15"/>
             <cost resource="Iron" quantity="2"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Light-Tank" quantity="1"/>
         </productionRule>
         <productionRule name="buyMedium-Tank">
             <cost resource="PUs" quantity="16"/>
             <cost resource="Iron" quantity="3"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Medium-Tank" quantity="1"/>
         </productionRule>
         <productionRule name="buyHeavy-Tank">
             <cost resource="PUs" quantity="17"/>
             <cost resource="Iron" quantity="4"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Heavy-Tank" quantity="1"/>
         </productionRule>
         <productionRule name="buySS-Panzer">
             <cost resource="PUs" quantity="17"/>
             <cost resource="Iron" quantity="4"/>
-            <cost resource="Fuel" quantity="1"/>
             <cost resource="SS" quantity="25"/>
             <result resourceOrUnit="SS-Panzer" quantity="1"/>
-        </productionRule>
-        <productionRule name="buyTank-Destroyer">
-            <cost resource="PUs" quantity="13"/>
-            <cost resource="Iron" quantity="2"/>
-            <cost resource="Fuel" quantity="1"/>
-            <result resourceOrUnit="Tank-Destroyer" quantity="1"/>
         </productionRule>
         <productionRule name="buyPatrol-Boat">
             <cost resource="PUs" quantity="13"/>
             <cost resource="Iron" quantity="1"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Patrol-Boat" quantity="1"/>
         </productionRule>
         <productionRule name="buyTransport">
             <cost resource="PUs" quantity="20"/>
             <cost resource="Iron" quantity="2"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Transport" quantity="1"/>
         </productionRule>
         <productionRule name="buySubmarine">
             <cost resource="PUs" quantity="25"/>
             <cost resource="Iron" quantity="2"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Submarine" quantity="1"/>
         </productionRule>
         <productionRule name="buyDestroyer">
             <cost resource="PUs" quantity="16"/>
             <cost resource="Iron" quantity="2"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Destroyer" quantity="1"/>
         </productionRule>
         <productionRule name="buyCruiser">
             <cost resource="PUs" quantity="20"/>
             <cost resource="Iron" quantity="3"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Cruiser" quantity="1"/>
         </productionRule>
         <productionRule name="buyBattleship">
             <cost resource="PUs" quantity="35"/>
             <cost resource="Iron" quantity="4"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Battleship" quantity="1"/>
         </productionRule>
         <productionRule name="buyCarrier">
             <cost resource="PUs" quantity="40"/>
             <cost resource="Iron" quantity="4"/>
-            <cost resource="Fuel" quantity="1"/>
             <result resourceOrUnit="Carrier" quantity="1"/>
         </productionRule>
         <productionRule name="buyFighter">
@@ -1408,7 +1395,7 @@
             <result resourceOrUnit="Factory" quantity="1"/>
         </productionRule>
         <productionRule name="buyAnti-Air">
-            <cost resource="PUs" quantity="7"/>
+            <cost resource="PUs" quantity="9"/>
             <result resourceOrUnit="Anti-Air" quantity="1"/>
         </productionRule>
         <productionRule name="buyFlag">
@@ -1451,10 +1438,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>
@@ -1475,10 +1462,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>
@@ -1499,10 +1486,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>
@@ -1524,9 +1511,9 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -1549,10 +1536,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>        <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -1575,10 +1562,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>       <!-- New -->
@@ -1602,10 +1589,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>
@@ -1630,10 +1617,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>
@@ -1659,10 +1646,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>
@@ -1695,9 +1682,9 @@
             <frontierRules name="buyArtillery"/>         <!-- New -->
             <frontierRules name="buyMech-Inf"/>          <!-- New -->
             <frontierRules name="buySP-Artillery"/>      <!-- New -->
+            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyLight-Tank"/>        <!-- New -->
             <frontierRules name="buyMedium-Tank"/>       <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyFighter"/>           <!-- New -->
             <frontierRules name="buyDive-Bomber"/>       <!-- New -->
             <frontierRules name="buyTransport"/>
@@ -1711,10 +1698,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>        <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyTransport"/>
@@ -1736,9 +1723,9 @@
             <frontierRules name="buyArtillery"/>         <!-- New -->
             <frontierRules name="buyMech-Inf"/>          <!-- New -->
             <frontierRules name="buySP-Artillery"/>      <!-- New -->
+            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyLight-Tank"/>        <!-- New -->
             <frontierRules name="buyMedium-Tank"/>       <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyFighter"/>           <!-- New -->
             <frontierRules name="buyDive-Bomber"/>       <!-- New -->
             <frontierRules name="buyTransport"/>
@@ -1752,10 +1739,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>        <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyTransport"/>
@@ -1781,9 +1768,9 @@
             <frontierRules name="buyArtillery"/>         <!-- New -->
             <frontierRules name="buyMech-Inf"/>          <!-- New -->
             <frontierRules name="buySP-Artillery"/>      <!-- New -->
+            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyLight-Tank"/>        <!-- New -->
             <frontierRules name="buyMedium-Tank"/>       <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>       <!-- New -->
             <frontierRules name="buyTransport"/>
@@ -1800,10 +1787,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>        <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyTransport"/>
@@ -1830,9 +1817,9 @@
             <frontierRules name="buyArtillery"/>         <!-- New -->
             <frontierRules name="buyMech-Inf"/>          <!-- New -->
             <frontierRules name="buySP-Artillery"/>      <!-- New -->
+            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyLight-Tank"/>        <!-- New -->
             <frontierRules name="buyMedium-Tank"/>       <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyFighter"/>           <!-- New -->
             <frontierRules name="buyDive-Bomber"/>       <!-- New -->
             <frontierRules name="buyTransport"/>
@@ -1848,10 +1835,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>        <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyTransport"/>
@@ -1877,9 +1864,9 @@
             <frontierRules name="buyArtillery"/>         <!-- New -->
             <frontierRules name="buyMech-Inf"/>          <!-- New -->
             <frontierRules name="buySP-Artillery"/>      <!-- New -->
+            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyLight-Tank"/>        <!-- New -->
             <frontierRules name="buyMedium-Tank"/>       <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyFighter"/>           <!-- New -->
             <frontierRules name="buyDive-Bomber"/>       <!-- New -->
             <frontierRules name="buyTransport"/>
@@ -1895,10 +1882,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>        <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyTransport"/>
@@ -1915,9 +1902,9 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -1939,10 +1926,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>       <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -1964,10 +1951,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>      <!-- New -->
@@ -1990,9 +1977,9 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -2014,10 +2001,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>        <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -2039,10 +2026,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>       <!-- New -->
@@ -2065,10 +2052,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>
@@ -2107,9 +2094,9 @@
             <frontierRules name="buyArtillery"/>         <!-- New -->
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>       <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>    <!-- New -->
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>       <!-- New -->
             <frontierRules name="buyBomber"/>
@@ -2128,10 +2115,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>        <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -2150,10 +2137,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>       <!-- New -->
@@ -2174,9 +2161,9 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -2198,10 +2185,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>       <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -2223,10 +2210,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>      <!-- New -->
@@ -2283,9 +2270,9 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -2307,10 +2294,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>       <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -2332,10 +2319,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>      <!-- New -->
@@ -2358,10 +2345,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>
@@ -2403,9 +2390,9 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -2427,10 +2414,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>      <!-- New -->
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyBomber"/>
@@ -2452,10 +2439,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>     <!-- New -->
@@ -2478,10 +2465,10 @@
             <frontierRules name="buyArtillery"/>
             <frontierRules name="buyMech-Inf"/>
             <frontierRules name="buySP-Artillery"/>
+            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyLight-Tank"/>
             <frontierRules name="buyMedium-Tank"/>
             <frontierRules name="buyHeavy-Tank"/>
-            <frontierRules name="buyTank-Destroyer"/>
             <frontierRules name="buyFighter"/>
             <frontierRules name="buyDive-Bomber"/>
             <frontierRules name="buyJet-Fighter"/>
@@ -2901,7 +2888,7 @@
             <option name="attack" value="2"/>
             <option name="defense" value="3"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="canBlitz" value="true"/>
             <option name="artillery" value="true"/>
             <option name="unitSupportCount" value="1"/>
@@ -2911,7 +2898,7 @@
             <option name="attack" value="2"/>
             <option name="defense" value="3"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="canBlitz" value="true"/>
             <option name="isLandTransport" value="true"/>
             <option name="transportCost" value="2"/>
@@ -2920,7 +2907,7 @@
             <option name="attack" value="3"/>
             <option name="defense" value="4"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="canBlitz" value="true"/>
             <option name="transportCost" value="2"/>
                 <option name="offensiveAttackAA" value="1"/>
@@ -2939,7 +2926,7 @@
             <option name="attack" value="5"/>
             <option name="defense" value="4"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="canBlitz" value="true"/>
             <option name="transportCost" value="2"/>
         </attachment>
@@ -2947,7 +2934,7 @@
             <option name="attack" value="6"/>
             <option name="defense" value="5"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="canBlitz" value="true"/>
             <option name="transportCost" value="2"/>
         </attachment>
@@ -2955,7 +2942,7 @@
             <option name="attack" value="7"/>
             <option name="defense" value="6"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="canBlitz" value="true"/>
             <option name="transportCost" value="2"/>
         </attachment>
@@ -2963,7 +2950,7 @@
             <option name="attack" value="7"/>
             <option name="defense" value="6"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="canBlitz" value="true"/>
             <option name="transportCost" value="2"/>
         </attachment>
@@ -2972,6 +2959,7 @@
             <option name="attack" value="5"/>
             <option name="defense" value="6"/>
             <option name="movement" value="4"/>
+            <option name="fuelFlatCost" value="Fuel" count="2"/>
             <option name="carrierCost" value="1"/>
             <option name="isAir" value="true"/>
             <option name="canScramble" value="true"/>
@@ -2986,6 +2974,7 @@
             <option name="attack" value="6"/>
             <option name="defense" value="4"/>
             <option name="movement" value="4"/>
+            <option name="fuelFlatCost" value="Fuel" count="2"/>
             <option name="carrierCost" value="1"/>
             <option name="isAir" value="true"/>
             <option name="canScramble" value="true"/>
@@ -3010,6 +2999,7 @@
             <option name="attack" value="6"/>
             <option name="defense" value="6"/>
             <option name="movement" value="4"/>
+            <option name="fuelFlatCost" value="Fuel" count="2"/>
             <option name="carrierCost" value="1"/>
             <option name="isAir" value="true"/>
             <option name="canScramble" value="true"/>
@@ -3024,6 +3014,7 @@
             <option name="attack" value="7"/>
             <option name="defense" value="2"/>
             <option name="movement" value="6"/>
+            <option name="fuelFlatCost" value="Fuel" count="3"/>
             <option name="carrierCost" value="2"/>
             <option name="isAir" value="true"/>
             <option name="isStrategicBomber" value="true"/>
@@ -3037,6 +3028,7 @@
             <option name="attack" value="5"/>
             <option name="attackRolls" value="10"/>
             <option name="movement" value="6"/>
+            <option name="fuelFlatCost" value="Fuel" count="3"/>
             <option name="carrierCost" value="2"/>
             <option name="isAir" value="true"/>
             <option name="canAirBattle" value="true"/>
@@ -3050,6 +3042,7 @@
             <option name="attack" value="1"/>
             <option name="defense" value="1"/>
             <option name="movement" value="4"/>
+            <option name="fuelFlatCost" value="Fuel" count="2"/>
             <option name="carrierCost" value="2"/>
             <option name="isAir" value="true"/>
             <option name="isAirTransport" value="true"/>
@@ -3062,6 +3055,7 @@
         <attachment name="unitAttachment" attachTo="V1-Rocket" javaClass="games.strategy.triplea.attachments.UnitAttachment" type="unitType">
             <option name="attack" value="1"/>
             <option name="movement" value="2"/>
+            <option name="fuelFlatCost" value="Fuel" count="1"/>
             <option name="isAir" value="true"/>
             <option name="isSuicide" value="true"/>
             <option name="isKamikaze" value="true"/>
@@ -3071,6 +3065,7 @@
         <attachment name="unitAttachment" attachTo="V2-Rocket" javaClass="games.strategy.triplea.attachments.UnitAttachment" type="unitType">
             <option name="attack" value="2"/>
             <option name="movement" value="2"/>
+            <option name="fuelFlatCost" value="Fuel" count="1"/>
             <option name="isAir" value="true"/>
             <option name="isSuicide" value="true"/>
             <option name="isKamikaze" value="true"/>
@@ -3081,7 +3076,7 @@
         <attachment name="unitAttachment" attachTo="Transport" javaClass="games.strategy.triplea.attachments.UnitAttachment" type="unitType">
             <option name="defense" value="1"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="isSea" value="true"/>
             <option name="transportCapacity" value="3"/>
         </attachment>
@@ -3089,14 +3084,14 @@
             <option name="attack" value="3"/>
             <option name="defense" value="2"/>
             <option name="movement" value="1"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="isSea" value="true"/>
         </attachment>
         <attachment name="unitAttachment" attachTo="Submarine" javaClass="games.strategy.triplea.attachments.UnitAttachment" type="unitType">
             <option name="attack" value="5"/>
             <option name="defense" value="3"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="isSub" value="true"/>
             <option name="isSea" value="true"/>
         </attachment>
@@ -3104,7 +3099,7 @@
             <option name="attack" value="3"/>
             <option name="defense" value="3"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="isSea" value="true"/>
             <option name="isDestroyer" value="true"/>
         </attachment>
@@ -3112,7 +3107,7 @@
             <option name="attack" value="5"/>
             <option name="defense" value="5"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="isSea" value="true"/>
                 <option name="attackAA" value="1"/>
                 <option name="offensiveAttackAA" value="1"/>
@@ -3129,7 +3124,7 @@
             <option name="attack" value="6"/>
             <option name="defense" value="6"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="canBombard" value="true"/>
             <option name="bombard" value="6"/>
             <option name="hitPoints" value="2"/>
@@ -3139,7 +3134,7 @@
             <option name="attack" value="2"/>
             <option name="defense" value="2"/>
             <option name="movement" value="2"/>
-            <option name="createsResourcesList" value="-1:Fuel"/>
+            <option name="fuelCost" value="Fuel" count="1"/>
             <option name="hitPoints" value="2"/>
             <option name="isSea" value="true"/>
             <option name="carrierCapacity" value="3"/>
@@ -3277,7 +3272,7 @@
             <option name="production" value="2"/>
         </attachment>
         <attachment name="territoryAttachment" attachTo="Berlin" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
-            <option name="production" value="40"/>
+            <option name="production" value="50"/>
             <option name="capital" value="Germany"/>
             <option name="victoryCity" value="1"/>
         </attachment>
@@ -3335,7 +3330,8 @@
             <option name="victoryCity" value="1"/>
         </attachment>
         <attachment name="territoryAttachment" attachTo="Casablanca" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
-            <option name="production" value="5"/>
+            <option name="production" value="10"/>
+            <option name="capital" value="France"/>
             <option name="victoryCity" value="1"/>
         </attachment>
         <attachment name="territoryAttachment" attachTo="Castile" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
@@ -3557,7 +3553,7 @@
             <option name="production" value="2"/>
         </attachment>
         <attachment name="territoryAttachment" attachTo="Moscow" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
-            <option name="production" value="7"/>
+            <option name="production" value="15"/>
             <option name="capital" value="USSR"/>
             <option name="victoryCity" value="1"/>
         </attachment>
@@ -3607,7 +3603,7 @@
             <option name="production" value="2"/>
         </attachment>
         <attachment name="territoryAttachment" attachTo="Oslo" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
-            <option name="production" value="4"/>
+            <option name="production" value="5"/>
         </attachment>
         <attachment name="territoryAttachment" attachTo="Ostrovnoy" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
             <option name="production" value="1"/>
@@ -3706,7 +3702,7 @@
             <option name="production" value="5"/>
         </attachment>
         <attachment name="territoryAttachment" attachTo="Spanish Morocco" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
-            <option name="production" value="3"/>
+            <option name="production" value="5"/>
         </attachment>
         <attachment name="territoryAttachment" attachTo="Stalingrad" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
             <option name="production" value="5"/>
@@ -8119,12 +8115,12 @@
         
         <attachment name="conditionAttachment-Eastern-Romania-is-now-under-Axis-control" attachTo="Germany" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
             <option name="directPresenceTerritories" value="Eastern Romania" count="1"/>
-            <option name="unitPresence" value="Fuel-Barrel" count="30"/>
+            <option name="unitPresence" value="Fuel-Barrel" count="10"/>
             <option name="players" value="Slovakia:Hungary:Romania:Bulgaria:Croatia:Finland:Italy:Albania:Iraq"/>
         </attachment>
         <attachment name="triggerAttachment_Eastern_Romania_is_now_under_Axis_control" attachTo="Germany" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachment-Eastern-Romania-is-now-under-Axis-control"/>
-            <option name="removeUnits" value="Eastern Romania:Fuel-Barrel" count="30"/>
+            <option name="removeUnits" value="Eastern Romania:Fuel-Barrel" count="10"/>
             <option name="players" value="Slovakia:Hungary:Romania:Bulgaria:Croatia:Finland:Italy:Albania:Iraq"/>
             <option name="when" value="before:SlovakiaEndTurn"/>
             <option name="when" value="before:HungaryEndTurn"/>
@@ -8138,7 +8134,7 @@
         </attachment>
         <attachment name="triggerAttachment_Germany_now_claims_the_Iron_in_Eastern_Romania" attachTo="Germany" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachment-Eastern-Romania-is-now-under-Axis-control"/>
-            <option name="placement" value="Eastern Romania:Fuel-Barrel" count="30"/>
+            <option name="placement" value="Eastern Romania:Fuel-Barrel" count="10"/>
             <option name="players" value="Germany"/>
             <option name="when" value="before:SlovakiaEndTurn"/>
             <option name="when" value="before:HungaryEndTurn"/>
@@ -8153,12 +8149,12 @@
         
         <attachment name="conditionAttachment-Saudi-Arabia-is-now-under-Allied-control" attachTo="Britain" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
             <option name="directPresenceTerritories" value="Saudi Arabia" count="1"/>
-            <option name="unitPresence" value="Fuel-Barrel" count="3"/>
+            <option name="unitPresence" value="Fuel-Barrel" count="5"/>
             <option name="players" value="USSR:France:Greece:USA"/>
         </attachment>
         <attachment name="triggerAttachment_Saudi_Arabia_is_now_under_Allied_control" attachTo="Britain" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachment-Saudi-Arabia-is-now-under-Allied-control"/>
-            <option name="removeUnits" value="Saudi Arabia:Fuel-Barrel" count="3"/>
+            <option name="removeUnits" value="Saudi Arabia:Fuel-Barrel" count="5"/>
             <option name="players" value="USSR:France:Greece:USA"/>
             <option name="when" value="before:USSREndTurn"/>
             <option name="when" value="before:FranceEndTurn"/>
@@ -8167,7 +8163,7 @@
         </attachment>
         <attachment name="triggerAttachment_Britain_now_claims_the_Fuel_in_Saudi_Arabia" attachTo="Britain" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachment-Saudi-Arabia-is-now-under-Allied-control"/>
-            <option name="placement" value="Saudi Arabia:Fuel-Barrel" count="3"/>
+            <option name="placement" value="Saudi Arabia:Fuel-Barrel" count="5"/>
             <option name="players" value="Britain"/>
             <option name="when" value="before:USSREndTurn"/>
             <option name="when" value="before:FranceEndTurn"/>
@@ -8593,23 +8589,11 @@
         </attachment>
 <!-- End Time of the year intro popup window -->
 
-<!-- Start Triggers that continuously remove all fuel, SS, CR etc. from players -->
+<!-- Start Triggers that continuously remove all non-relevant resources from players -->
         <attachment name="conditionAttachmentRemoveOtherResourcesFromPlayers" attachTo="Germany" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
             <option name="rounds" value="1-+"/>
         </attachment>
 
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Germany" attachTo="Germany" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:GermanyPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Germany" attachTo="Germany" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:GermanyUserActions"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_CR_from_Germany" attachTo="Germany" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="CR"/>
@@ -8623,18 +8607,6 @@
             <option name="when" value="after:GermanyEndTurn"/>
         </attachment>
 
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Slovakia" attachTo="Slovakia" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:SlovakiaPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Slovakia" attachTo="Slovakia" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:SlovakiaPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Slovakia" attachTo="Slovakia" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8654,18 +8626,6 @@
             <option name="when" value="after:SlovakiaEndTurn"/>
         </attachment>
         
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Bulgaria" attachTo="Bulgaria" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:BulgariaPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Bulgaria" attachTo="Bulgaria" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:BulgariaPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Bulgaria" attachTo="Bulgaria" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8685,18 +8645,6 @@
             <option name="when" value="after:BulgariaEndTurn"/>
         </attachment>
 
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Croatia" attachTo="Croatia" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:CroatiaPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Croatia" attachTo="Croatia" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:CroatiaPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Croatia" attachTo="Croatia" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8716,18 +8664,6 @@
             <option name="when" value="after:CroatiaEndTurn"/>
         </attachment>
 
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Hungary" attachTo="Hungary" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:HungaryPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Hungary" attachTo="Hungary" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:HungaryPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Hungary" attachTo="Hungary" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8747,18 +8683,6 @@
             <option name="when" value="after:HungaryEndTurn"/>
         </attachment>
         
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Romania" attachTo="Romania" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:RomaniaPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Romania" attachTo="Romania" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:RomaniaPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Romania" attachTo="Romania" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8778,18 +8702,6 @@
             <option name="when" value="after:RomaniaEndTurn"/>
         </attachment>
 
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Finland" attachTo="Finland" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:FinlandPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Finland" attachTo="Finland" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:FinlandPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Finland" attachTo="Finland" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8809,23 +8721,11 @@
             <option name="when" value="after:FinlandEndTurn"/>
         </attachment>
         
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Italy" attachTo="Italy" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:ItalyPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Italy" attachTo="Italy" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
             <option name="resourceCount" value="-9999"/>
             <option name="when" value="after:ItalyEndTurn"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Italy" attachTo="Italy" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:ItalyUserActions"/>
         </attachment>
         <attachment name="triggerAttachment_Removing_Officials_from_Italy" attachTo="Italy" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
@@ -8834,18 +8734,6 @@
             <option name="when" value="after:ItalyEndTurn"/>
         </attachment>
 
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Albania" attachTo="Albania" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:AlbaniaPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Albania" attachTo="Albania" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:AlbaniaPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Albania" attachTo="Albania" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8865,18 +8753,6 @@
             <option name="when" value="after:AlbaniaEndTurn"/>
         </attachment>
 
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Iraq" attachTo="Iraq" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:IraqPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Iraq" attachTo="Iraq" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:IraqPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Iraq" attachTo="Iraq" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8896,18 +8772,6 @@
             <option name="when" value="after:IraqEndTurn"/>
         </attachment>
         
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_USA" attachTo="USA" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:USAPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_USA" attachTo="USA" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:USAUserActions"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_USA" attachTo="USA" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8927,18 +8791,6 @@
             <option name="when" value="after:USAEndTurn"/>
         </attachment>
 
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_France" attachTo="France" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:FrancePurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_France" attachTo="France" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:FrancePurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_France" attachTo="France" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8952,18 +8804,6 @@
             <option name="when" value="after:FranceEndTurn"/>
         </attachment>
         
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_USSR" attachTo="USSR" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:USSRPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_USSR" attachTo="USSR" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:USSRPurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_USSR" attachTo="USSR" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -8977,18 +8817,6 @@
             <option name="when" value="after:USSREndTurn"/>
         </attachment>
 
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Britain" attachTo="Britain" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:BritainPurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Britain" attachTo="Britain" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:BritainUserActions"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Britain" attachTo="Britain" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -9002,18 +8830,6 @@
             <option name="when" value="after:BritainEndTurn"/>
         </attachment>
         
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Greece" attachTo="Greece" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:GreecePurchase"/>
-        </attachment>
-        <attachment name="triggerAttachment_Giving_1_Fuel_to_Greece" attachTo="Greece" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
-            <option name="resourceCount" value="1"/>
-            <option name="when" value="before:GreecePurchase"/>
-        </attachment>
         <attachment name="triggerAttachment_Removing_SS_from_Greece" attachTo="Greece" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
@@ -9036,12 +8852,6 @@
         <attachment name="triggerAttachment_Removing_SS_from_True-Neutral" attachTo="True-Neutral" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:True-NeutralEndTurn"/>
-        </attachment>
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_True-Neutral" attachTo="True-Neutral" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
             <option name="resourceCount" value="-9999"/>
             <option name="when" value="after:True-NeutralEndTurn"/>
         </attachment>
@@ -9069,16 +8879,16 @@
             <option name="resourceCount" value="-9999"/>
             <option name="when" value="after:True-NeutralEndTurn"/>
         </attachment>
+        <attachment name="triggerAttachment_Removing_Fuel_from_True-Neutral" attachTo="True-Neutral" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
+            <option name="resource" value="Fuel"/>
+            <option name="resourceCount" value="-9999"/>
+            <option name="when" value="after:True-NeutralEndTurn"/>
+        </attachment>
 
         <attachment name="triggerAttachment_Removing_SS_from_Pro-Axis-Neutral" attachTo="Pro-Axis-Neutral" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:Pro-Axis-NeutralEndTurn"/>
-        </attachment>
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Pro-Axis-Neutral" attachTo="Pro-Axis-Neutral" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
             <option name="resourceCount" value="-9999"/>
             <option name="when" value="after:Pro-Axis-NeutralEndTurn"/>
         </attachment>
@@ -9106,16 +8916,16 @@
             <option name="resourceCount" value="-9999"/>
             <option name="when" value="after:Pro-Axis-NeutralEndTurn"/>
         </attachment>
+        <attachment name="triggerAttachment_Removing_Fuel_from_Pro-Axis-Neutral" attachTo="Pro-Axis-Neutral" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
+            <option name="resource" value="Fuel"/>
+            <option name="resourceCount" value="-9999"/>
+            <option name="when" value="after:Pro-Axis-NeutralEndTurn"/>
+        </attachment>
 
         <attachment name="triggerAttachment_Removing_SS_from_Pro-Allies-Neutral" attachTo="Pro-Allies-Neutral" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
             <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
             <option name="resource" value="SS"/>
-            <option name="resourceCount" value="-9999"/>
-            <option name="when" value="after:Pro-Allies-NeutralEndTurn"/>
-        </attachment>
-        <attachment name="triggerAttachment_Removing_unspent_Fuel_from_Pro-Allies-Neutral" attachTo="Pro-Allies-Neutral" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
-            <option name="resource" value="Fuel"/>
             <option name="resourceCount" value="-9999"/>
             <option name="when" value="after:Pro-Allies-NeutralEndTurn"/>
         </attachment>
@@ -9143,7 +8953,13 @@
             <option name="resourceCount" value="-9999"/>
             <option name="when" value="after:Pro-Allies-NeutralEndTurn"/>
         </attachment>
-<!-- End Triggers that continuously remove all fuel, SS, CR etc. from players -->
+        <attachment name="triggerAttachment_Removing_Fuel_from_Pro-Allies-Neutral" attachTo="Pro-Allies-Neutral" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+            <option name="conditions" value="conditionAttachmentRemoveOtherResourcesFromPlayers"/>
+            <option name="resource" value="Fuel"/>
+            <option name="resourceCount" value="-9999"/>
+            <option name="when" value="after:Pro-Allies-NeutralEndTurn"/>
+        </attachment>
+<!-- End Triggers that continuously remove all non-relevant resources from players -->
     </attachmentList>
 
     <initialize>
@@ -9151,7 +8967,7 @@
             <territoryOwner territory="Albania" owner="Albania"/>
             <territoryOwner territory="Algiers" owner="France"/>
             <territoryOwner territory="Alsace-Lorraine" owner="France"/>
-            <territoryOwner territory="Alta" owner="Pro-Allies-Neutral"/>
+            <territoryOwner territory="Alta" owner="True-Neutral"/>
             <territoryOwner territory="Andalucia" owner="Pro-Axis-Neutral"/>
             <territoryOwner territory="Ankara" owner="True-Neutral"/>
             <territoryOwner territory="Archangel" owner="USSR"/>
@@ -9163,7 +8979,7 @@
             <territoryOwner territory="Bechar" owner="France"/>
             <territoryOwner territory="Belgium" owner="Pro-Allies-Neutral"/>
             <territoryOwner territory="Benghazi" owner="Italy"/>
-            <territoryOwner territory="Bergen" owner="Pro-Allies-Neutral"/>
+            <territoryOwner territory="Bergen" owner="True-Neutral"/>
             <territoryOwner territory="Berlin" owner="Germany"/>
             <territoryOwner territory="Bessarabia" owner="Romania"/>
             <territoryOwner territory="Bialystok" owner="USSR"/>
@@ -9199,7 +9015,7 @@
             <territoryOwner territory="El Alamein" owner="Britain"/>
             <territoryOwner territory="Estonia" owner="True-Neutral"/>
             <territoryOwner territory="Extremadura" owner="Pro-Axis-Neutral"/>
-            <territoryOwner territory="Finnmark" owner="Pro-Allies-Neutral"/>
+            <territoryOwner territory="Finnmark" owner="True-Neutral"/>
             <territoryOwner territory="Galicia" owner="Pro-Axis-Neutral"/>
             <territoryOwner territory="Galicia-Lodomeria" owner="USSR"/>
             <territoryOwner territory="Gascony" owner="France"/>
@@ -9227,7 +9043,7 @@
             <territoryOwner territory="Kharkov" owner="USSR"/>
             <territoryOwner territory="Kiev" owner="USSR"/>
             <territoryOwner territory="Krasnodar" owner="USSR"/>
-            <territoryOwner territory="Kristiansand" owner="Pro-Allies-Neutral"/>
+            <territoryOwner territory="Kristiansand" owner="True-Neutral"/>
             <territoryOwner territory="Kurdistan" owner="True-Neutral"/>
             <territoryOwner territory="Kursk" owner="USSR"/>
             <territoryOwner territory="Languedoc" owner="France"/>
@@ -9251,7 +9067,7 @@
             <territoryOwner territory="Mosul" owner="Iraq"/>
             <territoryOwner territory="Munster" owner="True-Neutral"/>
             <territoryOwner territory="Murmansk" owner="USSR"/>
-            <territoryOwner territory="Narvik" owner="Pro-Allies-Neutral"/>
+            <territoryOwner territory="Narvik" owner="True-Neutral"/>
             <territoryOwner territory="Netherlands" owner="Pro-Allies-Neutral"/>
             <territoryOwner territory="Newfoundland" owner="Britain"/>
             <territoryOwner territory="Nogilev" owner="USSR"/>
@@ -9268,7 +9084,7 @@
             <territoryOwner territory="Odessa" owner="USSR"/>
             <territoryOwner territory="Onega" owner="USSR"/>
             <territoryOwner territory="Oran" owner="France"/>
-            <territoryOwner territory="Oslo" owner="Pro-Allies-Neutral"/>
+            <territoryOwner territory="Oslo" owner="True-Neutral"/>
             <territoryOwner territory="Ostrovnoy" owner="USSR"/>
             <territoryOwner territory="Ouarzazate" owner="France"/>
             <territoryOwner territory="Oulu" owner="Finland"/>
@@ -9313,8 +9129,8 @@
             <territoryOwner territory="Transylvania" owner="Romania"/>
             <territoryOwner territory="Trebizond" owner="True-Neutral"/>
             <territoryOwner territory="Tripoli" owner="Italy"/>
-            <territoryOwner territory="Tromso" owner="Pro-Allies-Neutral"/>
-            <territoryOwner territory="Trondheim" owner="Pro-Allies-Neutral"/>
+            <territoryOwner territory="Tromso" owner="True-Neutral"/>
+            <territoryOwner territory="Trondheim" owner="True-Neutral"/>
             <territoryOwner territory="Tula" owner="USSR"/>
             <territoryOwner territory="Tunisia" owner="France"/>
             <territoryOwner territory="Tver" owner="USSR"/>
@@ -9343,21 +9159,21 @@
             <territoryOwner territory="Yekaterinoslav" owner="USSR"/>
             <territoryOwner territory="Copenhagen" owner="True-Neutral"/>
         </ownerInitialize>
+
         <unitInitialize>
             <unitPlacement unitType="Cruiser" territory="Adriatic Sea Zone" quantity="2" owner="Italy"/>
             <unitPlacement unitType="Destroyer" territory="Adriatic Sea Zone" quantity="4" owner="Italy"/>
             <unitPlacement unitType="Battleship" territory="Adriatic Sea Zone" quantity="1" owner="Italy"/>
-            <unitPlacement unitType="Transport" territory="Adriatic Sea Zone" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Patrol-Boat" territory="Adriatic Sea Zone" quantity="5" owner="Italy"/>
             <unitPlacement unitType="Transport" territory="Adriatic Sea Zone" quantity="2" owner="Germany"/>
             <unitPlacement unitType="Submarine" territory="Adriatic Sea Zone" quantity="2" owner="Germany"/>
+            <unitPlacement unitType="Infantry" territory="Albania" quantity="1" owner="Italy"/>
+            <unitPlacement unitType="SS-Potential" territory="Albania" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Albania" quantity="1" owner="Albania"/>
-            <unitPlacement unitType="Infantry" territory="Albania" quantity="1" owner="Albania"/>
+            <unitPlacement unitType="Infantry" territory="Albania" quantity="2" owner="Albania"/>
             <unitPlacement unitType="Iron-Ore" territory="Albania" quantity="1" owner="Albania"/>
             <unitPlacement unitType="Factory" territory="Albania" quantity="1" owner="Albania"/>
             <unitPlacement unitType="Flag" territory="Albania" quantity="1" owner="Albania"/>
-            <unitPlacement unitType="Infantry" territory="Albania" quantity="1" owner="Italy"/>
-            <unitPlacement unitType="SS-Potential" territory="Albania" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Algiers" quantity="1" owner="France"/>
             <unitPlacement unitType="Infantry" territory="Algiers" quantity="1" owner="France"/>
             <unitPlacement unitType="Colonial-Infantry" territory="Algiers" quantity="1" owner="France"/>
@@ -9369,9 +9185,9 @@
             <unitPlacement unitType="Light-Tank" territory="Alsace-Lorraine" quantity="1" owner="France"/>
             <unitPlacement unitType="Artillery" territory="Alsace-Lorraine" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Alsace-Lorraine" quantity="1" owner="France"/>
-            <unitPlacement unitType="Infantry" territory="Alta" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Artillery" territory="Alta" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Flag" territory="Alta" quantity="1" owner="Pro-Allies-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Alta" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Artillery" territory="Alta" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Flag" territory="Alta" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Andalucia" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Andalucia" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Andalucia" quantity="1" owner="Pro-Axis-Neutral"/>
@@ -9385,16 +9201,13 @@
             <unitPlacement unitType="Infantry" territory="Archangel" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Factory" territory="Archangel" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Archangel" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Infantry" territory="Armenia" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Armenia" quantity="2" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Armenia" quantity="1" owner="True-Neutral"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Austria" quantity="3" owner="Germany"/>
-            <unitPlacement unitType="Infantry" territory="Austria" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="SS-Infantry" territory="Austria" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Light-Tank" territory="Austria" quantity="1" owner="Germany"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Austria" quantity="5" owner="Germany"/>
             <unitPlacement unitType="Factory" territory="Austria" quantity="1" owner="Germany"/>
             <unitPlacement unitType="SS-Potential" territory="Austria" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Flag" territory="Austria" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Mech-Inf" territory="Austria" quantity="1" owner="Germany"/>
+            <unitPlacement unitType="Infantry" territory="Austria" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Fighter" territory="Aydin" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Aydin" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Aydin" quantity="1" owner="True-Neutral"/>
@@ -9402,19 +9215,13 @@
             <unitPlacement unitType="Cruiser" territory="Azov Sea Zone" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Destroyer" territory="Azov Sea Zone" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Submarine" territory="Azov Sea Zone" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Transport" territory="Azov Sea Zone" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Patrol-Boat" territory="Azov Sea Zone" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Infantry" territory="Banat" quantity="2" owner="True-Neutral"/>
+            <unitPlacement unitType="Patrol-Boat" territory="Azov Sea Zone" quantity="2" owner="USSR"/>
+            <unitPlacement unitType="Infantry" territory="Banat" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="SS-Potential" territory="Banat" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Banat" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Bavaria" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Cruiser" territory="Bay of Biscay Sea Zone" quantity="1" owner="France"/>
-            <unitPlacement unitType="Destroyer" territory="Bay of Biscay Sea Zone" quantity="1" owner="France"/>
-            <unitPlacement unitType="Submarine" territory="Bay of Biscay Sea Zone" quantity="1" owner="France"/>
-            <unitPlacement unitType="Patrol-Boat" territory="Bay of Biscay Sea Zone" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Bechar" quantity="1" owner="France"/>
             <unitPlacement unitType="Infantry" territory="Belgium" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Medium-Tank" territory="Belgium" quantity="1" owner="Pro-Allies-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Belgium" quantity="1" owner="Pro-Allies-Neutral"/>
             <unitPlacement unitType="SS-Potential" territory="Belgium" quantity="1" owner="Pro-Allies-Neutral"/>
             <unitPlacement unitType="Flag" territory="Belgium" quantity="1" owner="Pro-Allies-Neutral"/>
@@ -9425,20 +9232,19 @@
             <unitPlacement unitType="Artillery" territory="Benghazi" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Flag" territory="Benghazi" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Mech-Inf" territory="Benghazi" quantity="1" owner="Italy"/>
-            <unitPlacement unitType="Infantry" territory="Bergen" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Flag" territory="Bergen" quantity="1" owner="Pro-Allies-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Bergen" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Flag" territory="Bergen" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Berlin" quantity="6" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Berlin" quantity="5" owner="Germany"/>
-            <unitPlacement unitType="SS-Infantry" territory="Berlin" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Medium-Tank" territory="Berlin" quantity="1" owner="Germany"/>
+            <unitPlacement unitType="SS-Infantry" territory="Berlin" quantity="2" owner="Germany"/>
             <unitPlacement unitType="Factory" territory="Berlin" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Tank-Destroyer" territory="Berlin" quantity="1" owner="Germany"/>
+            <unitPlacement unitType="Tank-Destroyer" territory="Berlin" quantity="2" owner="Germany"/>
             <unitPlacement unitType="Artillery" territory="Berlin" quantity="1" owner="Germany"/>
             <unitPlacement unitType="SS-Potential" territory="Berlin" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Flag" territory="Berlin" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Mech-Inf" territory="Berlin" quantity="7" owner="Germany"/>
+            <unitPlacement unitType="Mech-Inf" territory="Berlin" quantity="8" owner="Germany"/>
+            <unitPlacement unitType="Medium-Tank" territory="Berlin" quantity="2" owner="Germany"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Bessarabia" quantity="1" owner="Romania"/>
-            <unitPlacement unitType="Infantry" territory="Bessarabia" quantity="1" owner="Romania"/>
             <unitPlacement unitType="Flag" territory="Bessarabia" quantity="1" owner="Romania"/>
             <unitPlacement unitType="Infantry" territory="Bialystok" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Artillery" territory="Bialystok" quantity="1" owner="USSR"/>
@@ -9449,7 +9255,7 @@
             <unitPlacement unitType="Infantry" territory="Bosnia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="SS-Potential" territory="Bosnia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Bosnia" quantity="1" owner="True-Neutral"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Bremen" quantity="3" owner="Germany"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Bremen" quantity="7" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Bremen" quantity="2" owner="Germany"/>
             <unitPlacement unitType="SS-Infantry" territory="Bremen" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Anti-Air" territory="Bremen" quantity="1" owner="Germany"/>
@@ -9467,10 +9273,13 @@
             <unitPlacement unitType="Fuel-Barrel" territory="Brittany" quantity="1" owner="France"/>
             <unitPlacement unitType="Factory" territory="Brittany" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Brittany" quantity="1" owner="France"/>
+            <unitPlacement unitType="Infantry" territory="Brittany" quantity="2" owner="France"/>
+            <unitPlacement unitType="Artillery" territory="Brittany" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Bryansk" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Bucharest" quantity="1" owner="Romania"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Bucharest" quantity="2" owner="Romania"/>
             <unitPlacement unitType="Fighter" territory="Bucharest" quantity="1" owner="Romania"/>
-            <unitPlacement unitType="Infantry" territory="Bucharest" quantity="1" owner="Romania"/>
+            <unitPlacement unitType="Infantry" territory="Bucharest" quantity="2" owner="Romania"/>
+            <unitPlacement unitType="Artillery" territory="Bucharest" quantity="1" owner="Romania"/>
             <unitPlacement unitType="Iron-Ore" territory="Bucharest" quantity="1" owner="Romania"/>
             <unitPlacement unitType="Factory" territory="Bucharest" quantity="1" owner="Romania"/>
             <unitPlacement unitType="Flag" territory="Bucharest" quantity="1" owner="Romania"/>
@@ -9485,12 +9294,13 @@
             <unitPlacement unitType="Factory" territory="Bulgaria" quantity="1" owner="Bulgaria"/>
             <unitPlacement unitType="Flag" territory="Bulgaria" quantity="1" owner="Bulgaria"/>
             <unitPlacement unitType="Flag" territory="Burgundy" quantity="1" owner="France"/>
+            <unitPlacement unitType="Infantry" territory="Burgundy" quantity="1" owner="France"/>
             <unitPlacement unitType="Fighter" territory="Bursa" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Bursa" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Bursa" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Bursa" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Fighter" territory="Cairo" quantity="1" owner="Britain"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Cairo" quantity="3" owner="Britain"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Cairo" quantity="5" owner="Britain"/>
             <unitPlacement unitType="Infantry" territory="Cairo" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Iron-Ore" territory="Cairo" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Factory" territory="Cairo" quantity="1" owner="Britain"/>
@@ -9502,9 +9312,9 @@
             <unitPlacement unitType="Submarine" territory="Canadian Coast Sea Zone" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Cruiser" territory="Cape Arkona Sea Zone" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Destroyer" territory="Cape Arkona Sea Zone" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Submarine" territory="Cape Arkona Sea Zone" quantity="3" owner="Germany"/>
+            <unitPlacement unitType="Submarine" territory="Cape Arkona Sea Zone" quantity="2" owner="Germany"/>
             <unitPlacement unitType="Transport" territory="Cape Arkona Sea Zone" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Patrol-Boat" territory="Cape Arkona Sea Zone" quantity="4" owner="Germany"/>
+            <unitPlacement unitType="Patrol-Boat" territory="Cape Arkona Sea Zone" quantity="2" owner="Germany"/>
             <unitPlacement unitType="Fighter" territory="Casablanca" quantity="1" owner="France"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Casablanca" quantity="4" owner="France"/>
             <unitPlacement unitType="Infantry" territory="Casablanca" quantity="1" owner="France"/>
@@ -9513,12 +9323,13 @@
             <unitPlacement unitType="SS-Potential" territory="Casablanca" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Casablanca" quantity="1" owner="France"/>
             <unitPlacement unitType="Mech-Inf" territory="Casablanca" quantity="1" owner="France"/>
-            <unitPlacement unitType="Infantry" territory="Castile" quantity="4" owner="Pro-Axis-Neutral"/>
+            <unitPlacement unitType="Iron-Ore" territory="Castile" quantity="1" owner="Germany"/>
+            <unitPlacement unitType="Infantry" territory="Castile" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Castile" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Castile" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Iron-Ore" territory="Castile" quantity="1" owner="Germany"/>
+            <unitPlacement unitType="Medium-Tank" territory="Castile" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Dive-Bomber" territory="Catalonia" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Infantry" territory="Catalonia" quantity="2" owner="Pro-Axis-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Catalonia" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Catalonia" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Catalonia" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Central Italy" quantity="3" owner="Italy"/>
@@ -9529,13 +9340,14 @@
             <unitPlacement unitType="Infantry" territory="Connaught" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Connaught" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Connaught" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Fighter" territory="Connaught" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Corsica" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Corsica" quantity="1" owner="France"/>
             <unitPlacement unitType="Infantry" territory="Crete" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Artillery" territory="Crete" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Flag" territory="Crete" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Crimea" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Infantry" territory="Crimea" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Infantry" territory="Crimea" quantity="2" owner="USSR"/>
             <unitPlacement unitType="Factory" territory="Crimea" quantity="1" owner="USSR"/>
             <unitPlacement unitType="SS-Potential" territory="Crimea" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Artillery" territory="Crimea" quantity="1" owner="USSR"/>
@@ -9557,12 +9369,12 @@
             <unitPlacement unitType="Flag" territory="East Lapland" quantity="1" owner="Finland"/>
             <unitPlacement unitType="Infantry" territory="Eastern Romania" quantity="1" owner="Romania"/>
             <unitPlacement unitType="Factory" territory="Eastern Romania" quantity="1" owner="Romania"/>
-            <unitPlacement unitType="Artillery" territory="Eastern Romania" quantity="1" owner="Romania"/>
             <unitPlacement unitType="Flag" territory="Eastern Romania" quantity="1" owner="Romania"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Eastern Romania" quantity="30" owner="Germany"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Eastern Romania" quantity="10" owner="Germany"/>
             <unitPlacement unitType="SS-Potential" territory="Eastern Romania" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Eastern USA" quantity="3" owner="USA"/>
             <unitPlacement unitType="Flag" territory="Eastern USA" quantity="1" owner="USA"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Eastern USA" quantity="7" owner="USA"/>
             <unitPlacement unitType="Dive-Bomber" territory="Edinburgh" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Edinburgh" quantity="5" owner="Britain"/>
             <unitPlacement unitType="Infantry" territory="Edinburgh" quantity="4" owner="Britain"/>
@@ -9580,20 +9392,18 @@
             <unitPlacement unitType="Light-Tank" territory="El Alamein" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Colony" territory="El Alamein" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Flag" territory="El Alamein" quantity="1" owner="Britain"/>
-            <unitPlacement unitType="Cruiser" territory="English Channel Sea Zone" quantity="2" owner="Britain"/>
-            <unitPlacement unitType="Destroyer" territory="English Channel Sea Zone" quantity="2" owner="Britain"/>
-            <unitPlacement unitType="Submarine" territory="English Channel Sea Zone" quantity="1" owner="Britain"/>
-            <unitPlacement unitType="Transport" territory="English Channel Sea Zone" quantity="1" owner="Britain"/>
-            <unitPlacement unitType="Battleship" territory="English Channel Sea Zone" quantity="1" owner="Britain"/>
-            <unitPlacement unitType="Patrol-Boat" territory="English Channel Sea Zone" quantity="4" owner="Britain"/>
+            <unitPlacement unitType="Patrol-Boat" territory="Estaca de Bares Sea Zone" quantity="1" owner="France"/>
+            <unitPlacement unitType="Submarine" territory="Estaca de Bares Sea Zone" quantity="1" owner="France"/>
+            <unitPlacement unitType="Destroyer" territory="Estaca de Bares Sea Zone" quantity="1" owner="France"/>
+            <unitPlacement unitType="Cruiser" territory="Estaca de Bares Sea Zone" quantity="1" owner="France"/>
             <unitPlacement unitType="Infantry" territory="Estonia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Estonia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="SS-Potential" territory="Estonia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Estonia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Extremadura" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Extremadura" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Infantry" territory="Finnmark" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Flag" territory="Finnmark" quantity="1" owner="Pro-Allies-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Finnmark" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Flag" territory="Finnmark" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Cruiser" territory="Frisian North Sea Zone" quantity="2" owner="Germany"/>
             <unitPlacement unitType="Destroyer" territory="Frisian North Sea Zone" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Submarine" territory="Frisian North Sea Zone" quantity="4" owner="Germany"/>
@@ -9602,13 +9412,18 @@
             <unitPlacement unitType="Patrol-Boat" territory="Frisian North Sea Zone" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Galicia" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Galicia" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Infantry" territory="Galicia-Lodomeria" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Artillery" territory="Galicia-Lodomeria" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Infantry" territory="Galicia-Lodomeria" quantity="3" owner="USSR"/>
             <unitPlacement unitType="SS-Potential" territory="Galicia-Lodomeria" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Galicia-Lodomeria" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Galicia-Lodomeria" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Transport" territory="Galway Bay Sea Zone" quantity="1" owner="Britain"/>
+            <unitPlacement unitType="Patrol-Boat" territory="Galway Bay Sea Zone" quantity="5" owner="Britain"/>
+            <unitPlacement unitType="Submarine" territory="Galway Bay Sea Zone" quantity="1" owner="Britain"/>
+            <unitPlacement unitType="Destroyer" territory="Galway Bay Sea Zone" quantity="2" owner="Britain"/>
+            <unitPlacement unitType="Cruiser" territory="Galway Bay Sea Zone" quantity="2" owner="Britain"/>
+            <unitPlacement unitType="Battleship" territory="Galway Bay Sea Zone" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Flag" territory="Gascony" quantity="1" owner="France"/>
-            <unitPlacement unitType="Infantry" territory="Genoa" quantity="2" owner="Italy"/>
-            <unitPlacement unitType="Artillery" territory="Genoa" quantity="1" owner="Italy"/>
+            <unitPlacement unitType="Infantry" territory="Genoa" quantity="3" owner="Italy"/>
             <unitPlacement unitType="Flag" territory="Genoa" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Fighter" territory="Gibraltar" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Dive-Bomber" territory="Gibraltar" quantity="1" owner="Britain"/>
@@ -9620,7 +9435,7 @@
             <unitPlacement unitType="Infantry" territory="Gotland" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Gotland" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Greece" quantity="1" owner="Greece"/>
-            <unitPlacement unitType="Infantry" territory="Greece" quantity="4" owner="Greece"/>
+            <unitPlacement unitType="Infantry" territory="Greece" quantity="3" owner="Greece"/>
             <unitPlacement unitType="Iron-Ore" territory="Greece" quantity="1" owner="Greece"/>
             <unitPlacement unitType="Light-Tank" territory="Greece" quantity="1" owner="Greece"/>
             <unitPlacement unitType="Factory" territory="Greece" quantity="1" owner="Greece"/>
@@ -9635,14 +9450,13 @@
             <unitPlacement unitType="Destroyer" territory="Gulf of Finland Sea Zone" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Battleship" territory="Gulf of Finland Sea Zone" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Transport" territory="Gulf of Finland Sea Zone" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Halifax" quantity="15" owner="Britain"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Halifax" quantity="5" owner="Britain"/>
             <unitPlacement unitType="Infantry" territory="Halifax" quantity="2" owner="Britain"/>
             <unitPlacement unitType="Iron-Ore" territory="Halifax" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Factory" territory="Halifax" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Artillery" territory="Halifax" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Flag" territory="Halifax" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Fighter" territory="Hannover" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Bomber" territory="Hannover" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Dive-Bomber" territory="Hannover" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Hannover" quantity="3" owner="Germany"/>
             <unitPlacement unitType="Light-Tank" territory="Hannover" quantity="2" owner="Germany"/>
@@ -9650,8 +9464,8 @@
             <unitPlacement unitType="Flag" territory="Hannover" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Mech-Inf" territory="Hannover" quantity="3" owner="Germany"/>
             <unitPlacement unitType="Fighter" territory="Helsinki" quantity="1" owner="Finland"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Helsinki" quantity="8" owner="Finland"/>
-            <unitPlacement unitType="Infantry" territory="Helsinki" quantity="5" owner="Finland"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Helsinki" quantity="3" owner="Finland"/>
+            <unitPlacement unitType="Infantry" territory="Helsinki" quantity="3" owner="Finland"/>
             <unitPlacement unitType="Light-Tank" territory="Helsinki" quantity="1" owner="Finland"/>
             <unitPlacement unitType="SP-Artillery" territory="Helsinki" quantity="1" owner="Finland"/>
             <unitPlacement unitType="Anti-Air" territory="Helsinki" quantity="1" owner="Finland"/>
@@ -9662,7 +9476,7 @@
             <unitPlacement unitType="Flag" territory="Highlands" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Flag" territory="Iceland" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Submarine" territory="Ionian Sea Zone" quantity="3" owner="Italy"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Iraq" quantity="1" owner="Iraq"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Iraq" quantity="2" owner="Iraq"/>
             <unitPlacement unitType="Fighter" territory="Iraq" quantity="1" owner="Iraq"/>
             <unitPlacement unitType="Infantry" territory="Iraq" quantity="1" owner="Iraq"/>
             <unitPlacement unitType="Light-Tank" territory="Iraq" quantity="1" owner="Iraq"/>
@@ -9671,7 +9485,7 @@
             <unitPlacement unitType="Flag" territory="Iraq" quantity="1" owner="Iraq"/>
             <unitPlacement unitType="Iron-Ore" territory="Iraq" quantity="1" owner="Iraq"/>
             <unitPlacement unitType="SS-Potential" territory="Iraq" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Infantry" territory="Istanbul" quantity="3" owner="True-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Istanbul" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Istanbul" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Istanbul" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Jamtland" quantity="1" owner="Pro-Axis-Neutral"/>
@@ -9680,7 +9494,7 @@
             <unitPlacement unitType="Flag" territory="Jutland" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Kainuu" quantity="1" owner="Finland"/>
             <unitPlacement unitType="Flag" territory="Kainuu" quantity="1" owner="Finland"/>
-            <unitPlacement unitType="Infantry" territory="Karamania" quantity="3" owner="True-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Karamania" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Karamania" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Karamania" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Karelia" quantity="1" owner="Finland"/>
@@ -9702,9 +9516,9 @@
             <unitPlacement unitType="Infantry" territory="Krasnodar" quantity="1" owner="USSR"/>
             <unitPlacement unitType="SS-Potential" territory="Krasnodar" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Krasnodar" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Infantry" territory="Kristiansand" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Flag" territory="Kristiansand" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Infantry" territory="Kurdistan" quantity="4" owner="True-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Kristiansand" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Flag" territory="Kristiansand" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Kurdistan" quantity="2" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Kurdistan" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Kursk" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Iron-Ore" territory="Languedoc" quantity="1" owner="France"/>
@@ -9713,7 +9527,6 @@
             <unitPlacement unitType="Artillery" territory="Latvia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="SS-Potential" territory="Latvia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Latvia" quantity="1" owner="True-Neutral"/>
-            <unitPlacement unitType="Fighter" territory="Leinster" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Leinster" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Leinster" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Leinster" quantity="1" owner="True-Neutral"/>
@@ -9730,6 +9543,7 @@
             <unitPlacement unitType="Infantry" territory="Leon" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Leon" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Submarine" territory="Ligurian Sea Zone" quantity="4" owner="Italy"/>
+            <unitPlacement unitType="Transport" territory="Ligurian Sea Zone" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Infantry" territory="Lisbon" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Lisbon" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Lisbon" quantity="1" owner="True-Neutral"/>
@@ -9748,15 +9562,15 @@
             <unitPlacement unitType="Flag" territory="Lublin" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Infantry" territory="Macedonia" quantity="1" owner="Greece"/>
             <unitPlacement unitType="Flag" territory="Macedonia" quantity="1" owner="Greece"/>
+            <unitPlacement unitType="SS-Potential" territory="Madrid" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Fighter" territory="Madrid" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Madrid" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="SP-Artillery" territory="Madrid" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Madrid" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Madrid" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="SS-Potential" territory="Madrid" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Mallorca" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Mallorca" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Mecklenburg" quantity="5" owner="Germany"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Mecklenburg" quantity="8" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Mecklenburg" quantity="4" owner="Germany"/>
             <unitPlacement unitType="Light-Tank" territory="Mecklenburg" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Flag" territory="Mecklenburg" quantity="1" owner="Germany"/>
@@ -9766,8 +9580,8 @@
             <unitPlacement unitType="Infantry" territory="Minsk" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Minsk" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Fighter" territory="Moscow" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Bomber" territory="Moscow" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Moscow" quantity="8" owner="USSR"/>
+            <unitPlacement unitType="Dive-Bomber" territory="Moscow" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Moscow" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Infantry" territory="Moscow" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Factory" territory="Moscow" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Tank-Destroyer" territory="Moscow" quantity="1" owner="USSR"/>
@@ -9781,9 +9595,10 @@
             <unitPlacement unitType="Flag" territory="Munster" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Murmansk" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Murmansk" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Infantry" territory="Narvik" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Iron-Ore" territory="Narvik" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Flag" territory="Narvik" quantity="1" owner="Pro-Allies-Neutral"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Murmansk" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Infantry" territory="Narvik" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Iron-Ore" territory="Narvik" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Flag" territory="Narvik" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Fighter" territory="Netherlands" quantity="1" owner="Pro-Allies-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Netherlands" quantity="1" owner="Pro-Allies-Neutral"/>
             <unitPlacement unitType="Light-Tank" territory="Netherlands" quantity="1" owner="Pro-Allies-Neutral"/>
@@ -9791,17 +9606,19 @@
             <unitPlacement unitType="Flag" territory="Netherlands" quantity="1" owner="Pro-Allies-Neutral"/>
             <unitPlacement unitType="Flag" territory="Newfoundland" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Flag" territory="Nogilev" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Norfolk" quantity="10" owner="USA"/>
-            <unitPlacement unitType="Infantry" territory="Norfolk" quantity="5" owner="USA"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Norfolk" quantity="6" owner="USA"/>
+            <unitPlacement unitType="Infantry" territory="Norfolk" quantity="6" owner="USA"/>
             <unitPlacement unitType="Iron-Ore" territory="Norfolk" quantity="1" owner="USA"/>
             <unitPlacement unitType="Artillery" territory="Norfolk" quantity="3" owner="USA"/>
-            <unitPlacement unitType="Marines" territory="Norfolk" quantity="1" owner="USA"/>
             <unitPlacement unitType="Flag" territory="Norfolk" quantity="1" owner="USA"/>
+            <unitPlacement unitType="Factory" territory="Norfolk" quantity="1" owner="USA"/>
+            <unitPlacement unitType="Marines" territory="Norfolk" quantity="1" owner="USA"/>
+            <unitPlacement unitType="Light-Tank" territory="Norfolk" quantity="1" owner="USA"/>
             <unitPlacement unitType="Flag" territory="Normandy" quantity="1" owner="France"/>
+            <unitPlacement unitType="Iron-Ore" territory="Norrbotten" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Norrbotten" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Norrbotten" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Norrbotten" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Iron-Ore" territory="Norrbotten" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Destroyer" territory="Northern Black Sea Zone" quantity="1" owner="Romania"/>
             <unitPlacement unitType="Submarine" territory="Northern Black Sea Zone" quantity="1" owner="Romania"/>
             <unitPlacement unitType="Transport" territory="Northern Black Sea Zone" quantity="1" owner="Romania"/>
@@ -9814,15 +9631,17 @@
             <unitPlacement unitType="Infantry" territory="Odessa" quantity="1" owner="USSR"/>
             <unitPlacement unitType="SS-Potential" territory="Odessa" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Odessa" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Odessa" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Onega" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Colonial-Infantry" territory="Oran" quantity="1" owner="France"/>
             <unitPlacement unitType="Colony" territory="Oran" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Oran" quantity="1" owner="France"/>
-            <unitPlacement unitType="Fighter" territory="Oslo" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Infantry" territory="Oslo" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Artillery" territory="Oslo" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="SS-Potential" territory="Oslo" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Flag" territory="Oslo" quantity="1" owner="Pro-Allies-Neutral"/>
+            <unitPlacement unitType="Fighter" territory="Oslo" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Oslo" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Artillery" territory="Oslo" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="SS-Potential" territory="Oslo" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Flag" territory="Oslo" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Oslo" quantity="3" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Ostrovnoy" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Ouarzazate" quantity="1" owner="France"/>
             <unitPlacement unitType="Infantry" territory="Oulu" quantity="1" owner="Finland"/>
@@ -9830,18 +9649,21 @@
             <unitPlacement unitType="Flag" territory="Oulu" quantity="1" owner="Finland"/>
             <unitPlacement unitType="Mech-Inf" territory="Oulu" quantity="1" owner="Finland"/>
             <unitPlacement unitType="Fighter" territory="Paris" quantity="1" owner="France"/>
-            <unitPlacement unitType="Infantry" territory="Paris" quantity="1" owner="France"/>
+            <unitPlacement unitType="Infantry" territory="Paris" quantity="2" owner="France"/>
             <unitPlacement unitType="SP-Artillery" territory="Paris" quantity="1" owner="France"/>
             <unitPlacement unitType="Factory" territory="Paris" quantity="1" owner="France"/>
             <unitPlacement unitType="SS-Potential" territory="Paris" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Paris" quantity="1" owner="France"/>
+            <unitPlacement unitType="Artillery" territory="Paris" quantity="1" owner="France"/>
+            <unitPlacement unitType="Anti-Air" territory="Paris" quantity="1" owner="France"/>
             <unitPlacement unitType="Infantry" territory="Petroskoi" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Petroskoi" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Infantry" territory="Petsamo" quantity="1" owner="Finland"/>
+            <unitPlacement unitType="Infantry" territory="Petsamo" quantity="2" owner="Finland"/>
             <unitPlacement unitType="Flag" territory="Petsamo" quantity="1" owner="Finland"/>
-            <unitPlacement unitType="Infantry" territory="Podolia" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Infantry" territory="Podolia" quantity="2" owner="USSR"/>
             <unitPlacement unitType="SS-Potential" territory="Podolia" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Podolia" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Podolia" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Poitou" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Poitou" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Poltava" quantity="1" owner="USSR"/>
@@ -9855,14 +9677,12 @@
             <unitPlacement unitType="SS-Infantry" territory="Posen" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Artillery" territory="Posen" quantity="5" owner="Germany"/>
             <unitPlacement unitType="Flag" territory="Posen" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Mech-Inf" territory="Posen" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Fighter" territory="Provence" quantity="1" owner="France"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Provence" quantity="1" owner="France"/>
-            <unitPlacement unitType="Infantry" territory="Provence" quantity="3" owner="France"/>
+            <unitPlacement unitType="Infantry" territory="Provence" quantity="2" owner="France"/>
             <unitPlacement unitType="Factory" territory="Provence" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Provence" quantity="1" owner="France"/>
-            <unitPlacement unitType="Infantry" territory="Prussia" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Artillery" territory="Prussia" quantity="1" owner="Germany"/>
+            <unitPlacement unitType="Infantry" territory="Prussia" quantity="3" owner="Germany"/>
             <unitPlacement unitType="Flag" territory="Prussia" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Flag" territory="Quebec" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Fighter" territory="Rome" quantity="1" owner="Italy"/>
@@ -9873,7 +9693,7 @@
             <unitPlacement unitType="Factory" territory="Rome" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Flag" territory="Rome" quantity="1" owner="Italy"/>
             <unitPlacement unitType="SS-Potential" territory="Rome" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Iron-Ore" territory="Safi" quantity="1" owner="France"/>
+            <unitPlacement unitType="Iron-Ore" territory="Safi" quantity="2" owner="France"/>
             <unitPlacement unitType="Colonial-Infantry" territory="Safi" quantity="1" owner="France"/>
             <unitPlacement unitType="Colony" territory="Safi" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Safi" quantity="1" owner="France"/>
@@ -9882,10 +9702,10 @@
             <unitPlacement unitType="Artillery" territory="Sardinia" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Flag" territory="Sardinia" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Flag" territory="Sasovo" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Infantry" territory="Saudi Arabia" quantity="2" owner="Pro-Allies-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Saudi Arabia" quantity="1" owner="Pro-Allies-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Saudi Arabia" quantity="1" owner="Pro-Allies-Neutral"/>
             <unitPlacement unitType="Flag" territory="Saudi Arabia" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Saudi Arabia" quantity="3" owner="Britain"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Saudi Arabia" quantity="5" owner="Britain"/>
             <unitPlacement unitType="Infantry" territory="Scania" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Scania" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Scania" quantity="1" owner="Pro-Axis-Neutral"/>
@@ -9898,18 +9718,18 @@
             <unitPlacement unitType="Infantry" territory="Serbia" quantity="2" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Serbia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Dive-Bomber" territory="Sicily" quantity="1" owner="Italy"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Sicily" quantity="2" owner="Italy"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Sicily" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Infantry" territory="Sicily" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Artillery" territory="Sicily" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Flag" territory="Sicily" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Colonial-Infantry" territory="Sirte" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Colony" territory="Sirte" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Flag" territory="Sirte" quantity="1" owner="Italy"/>
-            <unitPlacement unitType="Infantry" territory="Sivas" quantity="3" owner="True-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Sivas" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Sivas" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Sivas" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Slovakia" quantity="1" owner="Slovakia"/>
-            <unitPlacement unitType="Infantry" territory="Slovakia" quantity="1" owner="Slovakia"/>
+            <unitPlacement unitType="Infantry" territory="Slovakia" quantity="2" owner="Slovakia"/>
             <unitPlacement unitType="Iron-Ore" territory="Slovakia" quantity="1" owner="Slovakia"/>
             <unitPlacement unitType="Factory" territory="Slovakia" quantity="1" owner="Slovakia"/>
             <unitPlacement unitType="Flag" territory="Slovakia" quantity="1" owner="Slovakia"/>
@@ -9917,42 +9737,41 @@
             <unitPlacement unitType="Infantry" territory="Slovenia" quantity="2" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Slovenia" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Smolensk" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Southern Italy" quantity="3" owner="Italy"/>
-            <unitPlacement unitType="Infantry" territory="Southern Italy" quantity="1" owner="Italy"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Southern Italy" quantity="5" owner="Italy"/>
+            <unitPlacement unitType="Infantry" territory="Southern Italy" quantity="2" owner="Italy"/>
             <unitPlacement unitType="Anti-Air" territory="Southern Italy" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Factory" territory="Southern Italy" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Artillery" territory="Southern Italy" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Flag" territory="Southern Italy" quantity="1" owner="Italy"/>
+            <unitPlacement unitType="Mech-Inf" territory="Southern Italy" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Fighter" territory="Spanish Morocco" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Spanish Morocco" quantity="2" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Colony" territory="Spanish Morocco" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Spanish Morocco" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Spanish Morocco" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Mech-Inf" territory="Spanish Morocco" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Stalingrad" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Spanish Morocco" quantity="3" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Stalingrad" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="SP-Artillery" territory="Stalingrad" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Factory" territory="Stalingrad" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Stalingrad" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Mech-Inf" territory="Stalingrad" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Stavropol" quantity="4" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Stavropol" quantity="1" owner="USSR"/>
+            <unitPlacement unitType="SS-Potential" territory="Stockholm" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Fighter" territory="Stockholm" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Stockholm" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Medium-Tank" territory="Stockholm" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Stockholm" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="SS-Potential" territory="Stockholm" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Sukhumi" quantity="5" owner="USSR"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Sukhumi" quantity="2" owner="USSR"/>
             <unitPlacement unitType="Infantry" territory="Sukhumi" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Artillery" territory="Sukhumi" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Sukhumi" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Infantry" territory="Sundsvall" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Sundsvall" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Fighter" territory="Switzerland" quantity="1" owner="True-Neutral"/>
-            <unitPlacement unitType="Infantry" territory="Switzerland" quantity="6" owner="True-Neutral"/>
-            <unitPlacement unitType="Medium-Tank" territory="Switzerland" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Switzerland" quantity="2" owner="True-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Switzerland" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Switzerland" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Light-Tank" territory="Switzerland" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Infantry" territory="Syria" quantity="2" owner="France"/>
             <unitPlacement unitType="Colony" territory="Syria" quantity="1" owner="France"/>
             <unitPlacement unitType="SS-Potential" territory="Syria" quantity="1" owner="France"/>
@@ -9971,7 +9790,7 @@
             <unitPlacement unitType="Artillery" territory="Trebizond" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Trebizond" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Fighter" territory="Tripoli" quantity="1" owner="Italy"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Tripoli" quantity="8" owner="Italy"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Tripoli" quantity="7" owner="Italy"/>
             <unitPlacement unitType="Infantry" territory="Tripoli" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Iron-Ore" territory="Tripoli" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Light-Tank" territory="Tripoli" quantity="1" owner="Italy"/>
@@ -9982,14 +9801,14 @@
             <unitPlacement unitType="Flag" territory="Tripoli" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Mech-Inf" territory="Tripoli" quantity="1" owner="Italy"/>
             <unitPlacement unitType="SS-Potential" territory="Tripoli" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Infantry" territory="Tromso" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Iron-Ore" territory="Tromso" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Flag" territory="Tromso" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Infantry" territory="Trondheim" quantity="1" owner="Pro-Allies-Neutral"/>
-            <unitPlacement unitType="Flag" territory="Trondheim" quantity="1" owner="Pro-Allies-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Tromso" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Iron-Ore" territory="Tromso" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Flag" territory="Tromso" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Infantry" territory="Trondheim" quantity="1" owner="True-Neutral"/>
+            <unitPlacement unitType="Flag" territory="Trondheim" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Iron-Ore" territory="Tula" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Tula" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Tunisia" quantity="1" owner="France"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Tunisia" quantity="3" owner="France"/>
             <unitPlacement unitType="Colonial-Infantry" territory="Tunisia" quantity="1" owner="France"/>
             <unitPlacement unitType="Colony" territory="Tunisia" quantity="1" owner="France"/>
             <unitPlacement unitType="Artillery" territory="Tunisia" quantity="1" owner="France"/>
@@ -10000,26 +9819,23 @@
             <unitPlacement unitType="Infantry" territory="Ulster" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Flag" territory="Ulster" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Flag" territory="Umba" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Infantry" territory="Upper France" quantity="3" owner="France"/>
-            <unitPlacement unitType="Artillery" territory="Upper France" quantity="3" owner="France"/>
+            <unitPlacement unitType="Infantry" territory="Upper France" quantity="1" owner="France"/>
             <unitPlacement unitType="Flag" territory="Upper France" quantity="1" owner="France"/>
             <unitPlacement unitType="Fuel-Barrel" territory="Vaasa" quantity="2" owner="Finland"/>
-            <unitPlacement unitType="Infantry" territory="Vaasa" quantity="3" owner="Finland"/>
+            <unitPlacement unitType="Infantry" territory="Vaasa" quantity="2" owner="Finland"/>
             <unitPlacement unitType="Iron-Ore" territory="Vaasa" quantity="1" owner="Finland"/>
             <unitPlacement unitType="Flag" territory="Vaasa" quantity="1" owner="Finland"/>
             <unitPlacement unitType="Mech-Inf" territory="Vaasa" quantity="1" owner="Finland"/>
             <unitPlacement unitType="Infantry" territory="Valencia" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Medium-Tank" territory="Valencia" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Artillery" territory="Valencia" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Valencia" quantity="1" owner="Pro-Axis-Neutral"/>
+            <unitPlacement unitType="Iron-Ore" territory="Vasterbotten" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Infantry" territory="Vasterbotten" quantity="1" owner="Pro-Axis-Neutral"/>
             <unitPlacement unitType="Flag" territory="Vasterbotten" quantity="1" owner="Pro-Axis-Neutral"/>
-            <unitPlacement unitType="Iron-Ore" territory="Vasterbotten" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Flag" territory="Velsk" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Commissariat" territory="Velsk" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Infantry" territory="Venice" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Flag" territory="Venice" quantity="1" owner="Italy"/>
-            <unitPlacement unitType="Mech-Inf" territory="Venice" quantity="1" owner="Italy"/>
             <unitPlacement unitType="Infantry" territory="Vitebsk" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Artillery" territory="Vitebsk" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Vitebsk" quantity="1" owner="USSR"/>
@@ -10029,20 +9845,16 @@
             <unitPlacement unitType="Flag" territory="Volinia" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Flag" territory="Voronezh" quantity="1" owner="USSR"/>
             <unitPlacement unitType="Commissariat" territory="Voronezh" quantity="1" owner="USSR"/>
-            <unitPlacement unitType="Infantry" territory="Vyborg" quantity="1" owner="Finland"/>
+            <unitPlacement unitType="Infantry" territory="Vyborg" quantity="3" owner="Finland"/>
             <unitPlacement unitType="Flag" territory="Vyborg" quantity="1" owner="Finland"/>
             <unitPlacement unitType="Flag" territory="Wales" quantity="1" owner="Britain"/>
             <unitPlacement unitType="Infantry" territory="Warsaw" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="SS-Infantry" territory="Warsaw" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Light-Tank" territory="Warsaw" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Artillery" territory="Warsaw" quantity="1" owner="Germany"/>
             <unitPlacement unitType="Flag" territory="Warsaw" quantity="1" owner="Germany"/>
-            <unitPlacement unitType="Fuel-Barrel" territory="Washington" quantity="20" owner="USA"/>
-            <unitPlacement unitType="Infantry" territory="Washington" quantity="2" owner="USA"/>
-            <unitPlacement unitType="Iron-Ore" territory="Washington" quantity="2" owner="USA"/>
-            <unitPlacement unitType="Light-Tank" territory="Washington" quantity="1" owner="USA"/>
-            <unitPlacement unitType="Factory" territory="Washington" quantity="1" owner="USA"/>
-            <unitPlacement unitType="Artillery" territory="Washington" quantity="1" owner="USA"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Warsaw" quantity="3" owner="Germany"/>
+            <unitPlacement unitType="Fuel-Barrel" territory="Washington" quantity="5" owner="USA"/>
+            <unitPlacement unitType="Infantry" territory="Washington" quantity="1" owner="USA"/>
+            <unitPlacement unitType="Iron-Ore" territory="Washington" quantity="3" owner="USA"/>
             <unitPlacement unitType="Flag" territory="Washington" quantity="1" owner="USA"/>
             <unitPlacement unitType="Infantry" territory="Wessex" quantity="3" owner="Britain"/>
             <unitPlacement unitType="SP-Artillery" territory="Wessex" quantity="1" owner="Britain"/>
@@ -10071,32 +9883,47 @@
             <unitPlacement unitType="SS-Potential" territory="Copenhagen" quantity="1" owner="True-Neutral"/>
             <unitPlacement unitType="Flag" territory="Copenhagen" quantity="1" owner="True-Neutral"/>
         </unitInitialize>
+
         <resourceInitialize>
             <resourceGiven player="Germany" resource="SS" quantity="20"/>
-            <resourceGiven player="Germany" resource="Iron" quantity="4"/>
+            <resourceGiven player="Germany" resource="Iron" quantity="6"/>
             <resourceGiven player="Germany" resource="PUs" quantity="160"/>
+            <resourceGiven player="Germany" resource="Fuel" quantity="100"/>
             <resourceGiven player="Slovakia" resource="PUs" quantity="10"/>
+            <resourceGiven player="Slovakia" resource="Fuel" quantity="5"/>
             <resourceGiven player="Hungary" resource="PUs" quantity="10"/>
-            <resourceGiven player="Romania" resource="PUs" quantity="10"/>
+            <resourceGiven player="Hungary" resource="Fuel" quantity="5"/>
+            <resourceGiven player="Romania" resource="PUs" quantity="50"/>
+            <resourceGiven player="Romania" resource="Fuel" quantity="10"/>
             <resourceGiven player="France" resource="Iron" quantity="2"/>
             <resourceGiven player="France" resource="PUs" quantity="50"/>
+            <resourceGiven player="France" resource="Fuel" quantity="30"/>
             <resourceGiven player="Bulgaria" resource="PUs" quantity="10"/>
-            <resourceGiven player="USSR" resource="Iron" quantity="4"/>
+            <resourceGiven player="Bulgaria" resource="Fuel" quantity="5"/>
+            <resourceGiven player="USSR" resource="Iron" quantity="6"/>
             <resourceGiven player="USSR" resource="Officials" quantity="5"/>
-            <resourceGiven player="USSR" resource="PUs" quantity="85"/>
+            <resourceGiven player="USSR" resource="PUs" quantity="110"/>
+            <resourceGiven player="USSR" resource="Fuel" quantity="70"/>
             <resourceGiven player="Finland" resource="Iron" quantity="2"/>
             <resourceGiven player="Finland" resource="PUs" quantity="30"/>
+            <resourceGiven player="Finland" resource="Fuel" quantity="20"/>
             <resourceGiven player="Croatia" resource="PUs" quantity="25"/>
+            <resourceGiven player="Croatia" resource="Fuel" quantity="5"/>
             <resourceGiven player="Italy" resource="Iron" quantity="3"/>
             <resourceGiven player="Italy" resource="PUs" quantity="70"/>
+            <resourceGiven player="Italy" resource="Fuel" quantity="50"/>
             <resourceGiven player="Albania" resource="PUs" quantity="10"/>
+            <resourceGiven player="Albania" resource="Fuel" quantity="5"/>
             <resourceGiven player="Britain" resource="Iron" quantity="3"/>
             <resourceGiven player="Britain" resource="PUs" quantity="70"/>
+            <resourceGiven player="Britain" resource="Fuel" quantity="70"/>
             <resourceGiven player="Greece" resource="PUs" quantity="10"/>
-            <resourceGiven player="Iraq" resource="PUs" quantity="30"/>
-            <resourceGiven player="USA" resource="Fuel" quantity="24"/>
+            <resourceGiven player="Greece" resource="Fuel" quantity="5"/>
+            <resourceGiven player="Iraq" resource="PUs" quantity="20"/>
+            <resourceGiven player="Iraq" resource="Fuel" quantity="5"/>
             <resourceGiven player="USA" resource="Iron" quantity="3"/>
             <resourceGiven player="USA" resource="PUs" quantity="85"/>
+            <resourceGiven player="USA" resource="Fuel" quantity="30"/>
         </resourceInitialize>
         <relationshipInitialize>
             <relationship type="Allied" player1="Germany" player2="Slovakia" roundValue="2"/>
@@ -10324,6 +10151,9 @@
             <boolean/>
         </property>
         <property name="Units May Give Bonus Movement" value="true" editable="false">
+            <boolean/>
+        </property>
+        <property name="Use Fuel Cost" value="true" editable="false">
             <boolean/>
         </property>
 
@@ -10560,7 +10390,7 @@
 <center><img src="R-Convoy.png"/></center>
 <br><span style="font-size:13px;color:000000">Iron comes from iron deposits and is required to purchase ships and land vehicles.</span><br>
 <center><img src="R-Iron.png"/></center>
-<br><span style="font-size:13px;color:000000">Fuel comes from oil deposits and is required to purchase and maintain ships and land vehicles. All nations will always have a minimum of 1 Fuel to spend at Purchase.</span><br>
+<br><span style="font-size:13px;color:000000">Fuel is used by ships, land vehicles and planes to move. 1 unit moving to an adjacent territory consumes 1 Fuel. Planes are an exception to this rule, as they always consume Fuel equal to half of their full potential movement.</span><br>
 <center><img src="R-Oil.png"/></center>
 <br><span style="font-size:13px;color:000000">Colonial Recruitment (CR) comes from controlling specific territories and is used to purchase colonial infantry units. Several Allied nations plus Italy can make use of this resource.</span><br>
 <center><img src="R-Colony.png"/></center>

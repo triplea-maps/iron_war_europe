@@ -3926,7 +3926,7 @@
             <option name="activateTrigger" value="triggerAttachment_Slovakia_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Slovakia_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="Germany_Slovakia_20_PUs"/>
-            <option name="costPU" value="20"/>
+            <option name="costResources" value="20:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
 
@@ -3949,7 +3949,7 @@
             <option name="activateTrigger" value="triggerAttachment_Bulgaria_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Bulgaria_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="Germany_Bulgaria_20_PUs"/>
-            <option name="costPU" value="20"/>
+            <option name="costResources" value="20:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         
@@ -3972,7 +3972,7 @@
             <option name="activateTrigger" value="triggerAttachment_Croatia_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Croatia_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="Germany_Croatia_20_PUs"/>
-            <option name="costPU" value="20"/>
+            <option name="costResources" value="20:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
 
@@ -3995,7 +3995,7 @@
             <option name="activateTrigger" value="triggerAttachment_Iraq_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Iraq_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="Germany_Iraq_25_PUs"/>
-            <option name="costPU" value="25"/>
+            <option name="costResources" value="25:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
 
@@ -4018,7 +4018,7 @@
             <option name="activateTrigger" value="triggerAttachment_Hungary_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Hungary_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="Germany_Hungary_25_PUs"/>
-            <option name="costPU" value="25"/>
+            <option name="costResources" value="25:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         
@@ -4041,7 +4041,7 @@
             <option name="activateTrigger" value="triggerAttachment_Romania_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Romania_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="Germany_Romania_30_PUs"/>
-            <option name="costPU" value="30"/>
+            <option name="costResources" value="30:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         
@@ -4064,7 +4064,7 @@
             <option name="activateTrigger" value="triggerAttachment_Finland_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Finland_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="Germany_Finland_30_PUs"/>
-            <option name="costPU" value="30"/>
+            <option name="costResources" value="30:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         
@@ -4087,7 +4087,7 @@
             <option name="activateTrigger" value="triggerAttachment_Albania_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Albania_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="Italy_Albania_10_PUs"/>
-            <option name="costPU" value="10"/>
+            <option name="costResources" value="10:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         <attachment name="triggerAttachment_Albania_receive_financial_support-1B" attachTo="Italy" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
@@ -4103,7 +4103,7 @@
             <option name="activateTrigger" value="triggerAttachment_Albania_receive_financial_support-1B:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Albania_receive_financial_support-2B:1:false:false:false:false"/>
             <option name="text" value="Italy_Albania_20_PUs"/>
-            <option name="costPU" value="20"/>
+            <option name="costResources" value="20:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         <attachment name="triggerAttachment_Albania_receive_financial_support-1C" attachTo="Italy" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
@@ -4119,7 +4119,7 @@
             <option name="activateTrigger" value="triggerAttachment_Albania_receive_financial_support-1C:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Albania_receive_financial_support-2C:1:false:false:false:false"/>
             <option name="text" value="Italy_Albania_30_PUs"/>
-            <option name="costPU" value="30"/>
+            <option name="costResources" value="30:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         
@@ -4142,7 +4142,7 @@
             <option name="activateTrigger" value="triggerAttachment_France_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_France_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="USA_France_20_PUs"/>
-            <option name="costPU" value="20"/>
+            <option name="costResources" value="20:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         
@@ -4165,7 +4165,7 @@
             <option name="activateTrigger" value="triggerAttachment_USSR_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_USSR_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="USA_USSR_25_PUs"/>
-            <option name="costPU" value="25"/>
+            <option name="costResources" value="25:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         
@@ -4188,7 +4188,7 @@
             <option name="activateTrigger" value="triggerAttachment_Britain_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Britain_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="USA_Britain_30_PUs"/>
-            <option name="costPU" value="30"/>
+            <option name="costResources" value="30:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         
@@ -4211,7 +4211,7 @@
             <option name="activateTrigger" value="triggerAttachment_Greece_receive_financial_support-1:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Greece_receive_financial_support-2:1:false:false:false:false"/>
             <option name="text" value="Britain_Greece_10_PUs"/>
-            <option name="costPU" value="10"/>
+            <option name="costResources" value="10:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         <attachment name="triggerAttachment_Greece_receive_financial_support-1B" attachTo="Britain" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
@@ -4227,7 +4227,7 @@
             <option name="activateTrigger" value="triggerAttachment_Greece_receive_financial_support-1B:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Greece_receive_financial_support-2B:1:false:false:false:false"/>
             <option name="text" value="Britain_Greece_20_PUs"/>
-            <option name="costPU" value="20"/>
+            <option name="costResources" value="20:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
         <attachment name="triggerAttachment_Greece_receive_financial_support-1C" attachTo="Britain" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
@@ -4243,7 +4243,7 @@
             <option name="activateTrigger" value="triggerAttachment_Greece_receive_financial_support-1C:1:false:false:false:false"/>
             <option name="activateTrigger" value="triggerAttachment_Greece_receive_financial_support-2C:1:false:false:false:false"/>
             <option name="text" value="Britain_Greece_30_PUs"/>
-            <option name="costPU" value="30"/>
+            <option name="costResources" value="30:PUs"/>
             <option name="attemptsPerTurn" value="1"/>
         </attachment>
 <!-- End Major players can support minor players as political actions -->
